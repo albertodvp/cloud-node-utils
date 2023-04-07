@@ -2,13 +2,12 @@
 
 apt install tmux htop -y
 
-adduser albertodvp --disabled-login
-mkdir /home/albertodvp
+adduser albertodvp --disabled-password --gecos GECOS
 cp -r /root/.ssh /home/albertodvp/.ssh
-chown -R albertodvp:albertodvp /home/albertodvp
+chown -R albertodvp:albertodvp /home/albertodvp/.ssh/
 
 
-mkdir /etc/nix/
+sh <(curl -L https://nixos.org/nix/install) --daemon --yes
 cat <<EOF | sudo tee /etc/nix/nix.conf
 experimental-features = nix-command flakes
 allow-import-from-derivation = true
@@ -18,20 +17,14 @@ EOF
 
 
 su - albertodvp
-
-bash <(curl -L https://nixos.org/nix/install) --no-daemon
-
 git clone https://github.com/input-output-hk/cardano-node
 cd cardano-node
 
-# Create a new session named "node"
+tmux start-server  
 tmux new-session -d -s node
+tmux new-window -t node:1  -n "Node"
+tmux send-keys -t node:1 "nix build .#cardano-node -o cardano-node-build --accept-flake-config" C-m
+tmux new-window -t node:2  -n "CLI"
+tmux send-keys -t node:2 "nix build .#cardano-cli -o cardano-cli-build --accept-flake-config" C-m
 
-# Open a new window and run "command1" in it
-tmux new-window -t node:1 -n "Node" "nix build .#cardano-node -o cardano-node-build"
-
-# Open another new window and run "command2" in it
-tmux new-window -t node:2 -n "Cli" "nix build .#cardano-cli -o cardano-cli-build"
-
-# Attach to the "node" session
-tmux attach-session -t node
+tmux attach-session -t node:1
