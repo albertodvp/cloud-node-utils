@@ -1,7 +1,7 @@
 #!/bin/bash
 
 git clone https://github.com/input-output-hk/cardano-node 
-cd cardano-node
+cd cardano-node || exit 1
 
 tmux start-server  
 tmux new-session -d -s node
