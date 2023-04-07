@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "cloud-utils"
+version = "0.1.0"
+description = ""
+authors = ["Alberto Fanton <alberto.fanton@protonmail.com>"]
+readme = "README.md"
+packages = [{include = "cloud_utils"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pulumi = "^3.62.0"
+pulumi-hcloud = "^1.10.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
