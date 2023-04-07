@@ -2,9 +2,9 @@
 
 USERNAME=$1
 
-apt install tmux htop -y
+apt install tmux htop -y  || exit 1
 
-sh <(curl -L https://nixos.org/nix/install) --daemon --yes
+sh <(curl -L https://nixos.org/nix/install) --daemon --yes  || exit 1
 
 cat <<EOF | sudo tee /etc/nix/nix.conf
 experimental-features = nix-command flakes

@@ -10,8 +10,7 @@ key_path = Path.home() / Path(".ssh/id_rsa_hetzner_personal.pub")
 default = hcloud.SshKey("default", public_key=(lambda path: open(path).read())(key_path))
 
 
-
-server_test_hcloud_index_server_server = hcloud.Server(
+node_server = hcloud.Server(
     "node",
     ssh_keys=[default.id],
     server_type="cx41",
@@ -21,3 +20,9 @@ server_test_hcloud_index_server_server = hcloud.Server(
         ipv6_enabled=True,
     )])
 
+master = hcloud.Volume("master",
+    size=50,
+    server_id=node_server.id,
+    automount=True,
+    delete_protection=True,
+    format="ext4")
