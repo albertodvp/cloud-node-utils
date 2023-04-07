@@ -2,7 +2,7 @@
 
 apt install tmux htop -y
 
-useradd albertodvp --disabled-login
+adduser albertodvp --disabled-login
 mkdir /home/albertodvp
 cp -r /root/.ssh /home/albertodvp/.ssh
 chown -R albertodvp:albertodvp /home/albertodvp
