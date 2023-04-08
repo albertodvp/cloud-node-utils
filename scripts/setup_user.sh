@@ -7,9 +7,9 @@ CARDANO_DATA=$HOME/data/cardano/db
 git clone https://github.com/input-output-hk/cardano-node 
 cd cardano-node || exit 1
 
-mkdir"$CARDANO_DATA" -p
+mkdir "$CARDANO_DATA" -p
 
-cat <<EOF | sudo tee ~/.bashrc
+cat <<EOF | tee ~/.bashrc
 export CARDANO_DATA=$CARDANO_DATA
 alias cardano-node=$HOME/cardano-node/cardano-node-build/bin/cardano-node
 alias cardano-cli=$HOME/cardano-node/cardano-cli-build/bin/cardano-cli
