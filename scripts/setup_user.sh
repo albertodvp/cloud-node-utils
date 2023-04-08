@@ -16,8 +16,6 @@ cat <<EOF | tee -a ~/.bashrc
 export CARDANO_DATA=$CARDANO_DATA
 export CARDANO_CONFIG_PREVIEW=$CARDANO_CONFIG_PREVIEW
 export CARDANO_CONFIG_MAINNET=$CARDANO_CONFIG_MAINNET
-alias cardano-node=$HOME/cardano-node/cardano-node-build/bin/cardano-node
-alias cardano-cli=$HOME/cardano-node/cardano-cli-build/bin/cardano-cli
 EOF
 
 source "$HOME/.bashrc"
