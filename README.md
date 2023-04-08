@@ -1,4 +1,4 @@
-# Cloud note utils
+# Cloud node utils
 This is some IaC and scripts to setup a personal cardano node on hetzner using pulumi.
 The steps must be successully executed in order.
 
@@ -44,7 +44,7 @@ The same private key used for `root` will allow access to the newly created user
 ### User setup | on cloud, as non-root
 > **_NOTE:_** run the bash script as non-root user generated in the previous step.
 In this step, we install some tools with nix.
-```bashP
+```bash
 ./setup_user.sh
 ```
 
