@@ -1,7 +1,7 @@
 This is some IaC and scripts to setup a personal cardano node on hetzner using pulumi.
 # Requirements
 - poetry intalled
-- a public on a given [path](./__main__.py#L9) that will be loaded on the server
+- a public on a given [path](./__main__.py#L11) that will be loaded on the server
 
 # Setup
 ## Provisioning
@@ -18,7 +18,7 @@ In this step, we install and setup nix. We also create a user (in the example `a
 ```bash
 git clone https://github.com/albertodvp/node_cloud_utils.git
 cd node_cloud_utils
-./setup_root.sh albertodvp
+./scripts/setup_root.sh albertodvp
 ```
 
 ## User setup
@@ -28,7 +28,7 @@ In this step, we install some tools with nix.
 ./setup_user.sh
 ```
 
-# Run
+# Run (TBD)
 ## Run the preview testnet node
 **Note**: please, do check downloaded config manually before running the node.
 ```bash
@@ -38,7 +38,6 @@ In this step, we install some tools with nix.
 ## Use the cli
 
 # TODO
-- [ ] Use a volume to persit blockchain data
 - [ ] Setup github action to provision and deploy the node
 - [ ] Evaluate is nix build in parallel is ok
-
+- [ ] Setup preview node

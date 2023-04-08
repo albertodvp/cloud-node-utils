@@ -1,7 +1,7 @@
 #!/bin/bash
 
 USERNAME=$1
-
+USER_HOME="/home/$USERNAME"
 apt install tmux htop -y  || exit 1
 
 sh <(curl -L https://nixos.org/nix/install) --daemon --yes  || exit 1
@@ -14,6 +14,6 @@ trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=
 EOF
 
 adduser $USERNAME --disabled-password --gecos GECOS
-cp -r /root/.ssh /home/$USERNAME/.ssh
-cp setup_user.sh /home/$USERNAME
-chown -R $USERNAME:$USERNAME /home/$USERNAME
+cp -r "$HOME/.ssh" "$USER_HOME/.ssh"
+cp "scripts/setup_user.sh" "$USER_HOME/setup_user.sh"
+chown -R "$USERNAME":"$USERNAME" "$USER_HOME"
