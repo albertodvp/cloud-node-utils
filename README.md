@@ -13,9 +13,24 @@ The steps must be successully executed in order.
 git clone https://github.com/albertodvp/cloud_node_utils.git
 cd cloud_node_utils
 poetry install
+poetry run pulumi stack init node
 poetry run pulumi config set hcloud:token HETZNER_TOKEN --secret
-poetry run pulumi up
+poetry run pulumi up -f
 ```
+
+**Suggestion**: after you got your ipv4 assigned you may want to add these lines in your `~/.ssh/config` file.
+```plain
+Host node
+    HostName ASSIGNED_IP
+    User USERNAME
+    IdentityFile ~/.ssh/id_rsa_hetzner_personal
+
+Host node-root
+    HostName ASSIGNED_IP
+    User root
+    IdentityFile ~/.ssh/id_rsa_hetzner_personal
+```
+With these, you will be able to connect to the server easily (e.g. `ssh node-root` to access as root).
 
 ### Root setup | on cloud, as root
 In this step, we install and setup nix. We also create a user (in the example `albertodvp`)
@@ -27,7 +42,7 @@ cd cloud_node_utils
 The same private key used for `root` will allow access to the newly created user.
 
 ### User setup | on cloud, as non-root
-**Note**: run the bash script as non-root user generated in the previous step.
+> **_NOTE:_** run the bash script as non-root user generated in the previous step.
 In this step, we install some tools with nix.
 ```bashP
 ./setup_user.sh
@@ -35,8 +50,7 @@ In this step, we install some tools with nix.
 
 ## Run (TODO)
 ### Run the preview testnet node
-TODO
-**Note**: please, do check downloaded config manually before running the node.
+> **_NOTE:_** please, do check downloaded config manually before running the node.
 ```bash
 ./setup-run-testnet-preview.sh
 ```

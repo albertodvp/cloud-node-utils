@@ -2,12 +2,12 @@
 
 BUILD_NODE="nix build .#cardano-node -o cardano-node-build --accept-flake-config"
 BUILD_CLI="nix build .#cardano-cli -o cardano-cli-build --accept-flake-config"
-DATA=$HOME/data/cardano/db
+CARDANO_DATA=$HOME/data/cardano/db
 git clone https://github.com/input-output-hk/cardano-node 
 cd cardano-node || exit 1
 
-mkdir"$DATA" -p
-export DATA
+mkdir"$CARDANO_DATA" -p
+export CARDANO_DATA
 
 tmux start-server  
 tmux new-session -d -s node
