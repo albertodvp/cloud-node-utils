@@ -1,53 +1,55 @@
+# Cloud note utils
 This is some IaC and scripts to setup a personal cardano node on hetzner using pulumi.
 The steps must be successully executed in order.
 
-# Requirements
-- poetry intalled
-- a public on a given [path](./__main__.py#L11) that will be loaded on the server
-- a token generated from the Hetzner console
+## Requirements
+- [poetry](https://python-poetry.org) installed
+- a public key stored on a given local [path](./__main__.py#L11) that will be loaded on the server.
+- a token generated from the Hetzner [console](https://console.hetzner.cloud/) (`HETZNER_TOKEN`)
 
-# Setup
-## Provisioning
+## Setup 
+### Provisioning | on local pc
 ```bash
-git clone https://github.com/albertodvp/node_cloud_utils.git
+git clone https://github.com/albertodvp/cloud_node_utils.git
+cd cloud_node_utils
 poetry install
 poetry run pulumi config set hcloud:token HETZNER_TOKEN --secret
 poetry run pulumi up
 ```
 
-## Root setup
-**Note**: run the bash script as root.
+### Root setup | on cloud, as root
 In this step, we install and setup nix. We also create a user (in the example `albertodvp`)
 ```bash
-git clone https://github.com/albertodvp/node_cloud_utils.git
-cd node_cloud_utils
+git clone https://github.com/albertodvp/cloud_node_utils.git
+cd cloud_node_utils
 ./scripts/setup_root.sh albertodvp
 ```
 The same private key used for `root` will allow access to the newly created user.
 
-## User setup
+### User setup | on cloud, as non-root
 **Note**: run the bash script as non-root user generated in the previous step.
 In this step, we install some tools with nix.
-```bash
+```bashP
 ./setup_user.sh
 ```
 
-# Run (TBD)
-## Run the preview testnet node
+## Run (TODO)
+### Run the preview testnet node
+TODO
 **Note**: please, do check downloaded config manually before running the node.
 ```bash
 ./setup-run-testnet-preview.sh
 ```
-
-## Run the mainnet node
+### Run the mainnet node
 TODO
 
-## Use the cli
+### Use the cli
 TODO
 
-# TODO
+## TODO
 - [ ] Setup github action to provision and deploy the node
 - [ ] Evaluate is nix build in parallel is ok
 - [ ] Setup preview node
 - [ ] Setup mainnet node
 - [ ] Setup command for cardano cli
+- [ ] Make pub key path/name customizable
