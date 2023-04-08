@@ -1,8 +1,8 @@
 #!/bin/bash
 
 NET=$1
-BASE_URL="https://book.world.dev.cardano.org/environments/$NET/"
-NET_CONFIG="$CARDANO_CONFIG_PREVIEW/$NET"
+BASE_URL="https://book.world.dev.cardano.org/environments/$NET"
+NET_CONFIG="$CARDANO_CONFIG/$NET"
 
 echo "Creating $NET_CONFIG"
 mkdir $NET_CONFIG -p
@@ -12,5 +12,5 @@ do
     remote_file="$BASE_URL/$file_name.json"
     local_file="$NET_CONFIG/$file_name.json"
     echo "Downloading: $remote_file -> $local_file"
-    curl -O -J "$remote_file" "$local_file"
+    curl "$remote_file" -o "$local_file"
 done    
