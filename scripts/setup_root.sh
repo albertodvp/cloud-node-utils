@@ -13,7 +13,9 @@ substituters = https://cache.nixos.org https://cache.iog.io
 trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
 EOF
 
-adduser $USERNAME --disabled-password --gecos GECOS
+adduser "$USERNAME" --disabled-password --gecos GECOS
 cp -r "$HOME/.ssh" "$USER_HOME/.ssh"
-cp "scripts/setup_user.sh" "$USER_HOME/setup_user.sh"
+cp -r "scripts" "$USER_HOME/scripts"
 chown -R "$USERNAME":"$USERNAME" "$USER_HOME"
+
+# bash CARDNAO_DATA, cardano-cli, cardano-node

@@ -45,14 +45,14 @@ The same private key used for `root` will allow access to the newly created user
 > **_NOTE:_** run the bash script as non-root user generated in the previous step.
 In this step, we install some tools with nix.
 ```bash
-./setup_user.sh
+./scripts/setup_user.sh
 ```
 
 ## Run (TODO)
 ### Run the preview testnet node
 > **_NOTE:_** please, do check downloaded config manually before running the node.
 ```bash
-./setup-run-testnet-preview.sh
+./scripts/setup-run-testnet-preview.sh
 ```
 ### Run the mainnet node
 TODO
