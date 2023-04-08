@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "cloud-utils"
+name = "cloud_node_utils"
 version = "0.1.0"
 description = ""
 authors = ["Alberto Fanton <alberto.fanton@protonmail.com>"]
 readme = "README.md"
-packages = [{include = "cloud_utils"}]
+packages = [{include = "cloud_node_utils"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
