@@ -10,8 +10,8 @@ The steps must be successully executed in order.
 ## Setup 
 ### Provisioning | on local pc
 ```bash
-git clone https://github.com/albertodvp/cloud_node_utils.git
-cd cloud_node_utils
+git clone https://github.com/albertodvp/cloud-node-utils.git
+cd cloud-node-utils
 poetry install
 poetry run pulumi stack init node
 poetry run pulumi config set hcloud:token HETZNER_TOKEN --secret
@@ -35,25 +35,24 @@ With these, you will be able to connect to the server easily (e.g. `ssh node-roo
 ### Root setup | on cloud, as root
 In this step, we install and setup nix. We also create a user (in the example `albertodvp`)
 ```bash
-git clone https://github.com/albertodvp/cloud_node_utils.git
-cd cloud_node_utils
-./scripts/setup_root.sh
-./scripts/create_root.sh albertodvp
+git clone https://github.com/albertodvp/cloud-node-utils.git
+./cloud-node-utils/scripts/setup_root.sh
+./cloud-node-utils/scripts/create_root.sh albertodvp
 ```
-The same private key used for `root` will allow access to the newly created user.
+The same private key used for `root` will allow access to the newly created users.
 
 ### User setup | on cloud, as non-root
 > **_NOTE:_** run the bash script as non-root user generated in the previous step.
 In this step, we install some tools with nix.
 ```bash
-./scripts/setup_user.sh
+./cloud-node-utils/scripts/setup_user.sh
 ```
 
 ## Run (TODO)
 ### Run the preview testnet node
 > **_NOTE:_** please, do check downloaded config manually before running the node.
 ```bash
-./scripts/download_config_per_net.sh preview
+./cloud-node-utils/scripts/download_config_per_net.sh preview
 
 ```
 ### Run the mainnet node
