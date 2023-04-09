@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied, provide username"
+fi
 
 USERNAME=$1
 USER_HOME="/home/$USERNAME"
