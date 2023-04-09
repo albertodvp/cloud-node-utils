@@ -4,7 +4,7 @@ apt install tmux htop -y  || exit 1
 
 sh <(curl -L https://nixos.org/nix/install) --daemon --yes  || exit 1
 
-cat <<EOF | sudo tee /etc/nix/nix.conf
+cat <<EOF | tee /etc/nix/nix.conf
 experimental-features = nix-command flakes
 allow-import-from-derivation = true
 substituters = https://cache.nixos.org https://cache.iog.io

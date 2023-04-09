@@ -9,14 +9,12 @@ git clone https://github.com/albertodvp/cloud-node-utils.git
 
 mkdir "$CARDANO_DATA" -p
 
-cp "cloud-node-utils/config/.bashrc" "$USER_BASHRC"
-cat <<EOF | sudo tee -a "$USER_BASHRC"
+cat <<EOF | tee -a "$USER_BASHRC"
 export CARDANO_DATA=$CARDANO_DATA
 export USER_PATH=$USER_PATH
 EOF
 
 source "$USER_BASHRC"
-
 
 BUILD_NODE="cd cardano-node \
             && nix build .#cardano-node -o cardano-node-build --accept-flake-config \
