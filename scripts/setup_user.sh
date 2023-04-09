@@ -1,18 +1,19 @@
 #!/bin/bash
 
-BUILD_NODE="nix build .#cardano-node -o cardano-node-build --accept-flake-config"
-BUILD_CLI="nix build .#cardano-cli -o cardano-cli-build --accept-flake-config"
-CARDANO_DATA=$HOME/data/cardano/db
-git clone https://github.com/input-output-hk/cardano-node 
-cd cardano-node || exit 1
+CARDANO_DATA="$HOME/data/cardano/db"
+USER_BASHRC="$HOME/.bashrc"
+
+git clone https://github.com/input-output-hk/cardano-node
+git clone https://github.com/albertodvp/cloud-node-utils.git
 
 mkdir "$CARDANO_DATA" -p
 
-cat <<EOF | tee -a ~/.bashrc
-export CARDANO_DATA=$CARDANO_DATA
-EOF
+cp "cloud-node-utils/config/.bashrc" "$USER_BASHRC"
+export CARDANO_DATA
+source "$USER_BASHRC"
 
-source "$HOME/.bashrc"
+BUILD_NODE="nix build cardano-node#cardano-node -o cardano-node-build --accept-flake-config"
+BUILD_CLI="nix build cardano-node#cardano-cli -o cardano-cli-build --accept-flake-config"
 
 tmux start-server  
 tmux new-session -d -s node
