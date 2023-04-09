@@ -2,16 +2,17 @@
 
 CARDANO_DATA="$HOME/data/cardano"
 USER_BASHRC="$HOME/.bashrc"
-USER_PATH="$HOME/bin"
+USER_BIN="$HOME/bin"
 
 git clone https://github.com/input-output-hk/cardano-node
 git clone https://github.com/albertodvp/cloud-node-utils.git
 
 mkdir "$CARDANO_DATA" -p
+mkdir "$USER_BIN" -p
 
 cat <<EOF | tee -a "$USER_BASHRC"
 export CARDANO_DATA=$CARDANO_DATA
-export USER_PATH=$USER_PATH
+export PATH=$USER_BIN:$PATH
 EOF
 
 source "$USER_BASHRC"
