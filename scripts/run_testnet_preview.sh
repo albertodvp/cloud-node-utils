@@ -1,7 +1,8 @@
 #!/bin/bash
+CARDANO_CONFIG_PREVIEW="$CARDANO_CONFIG/preview"
 
 $HOME/cardano-node/cardano-node-build/bin/cardano-node run \
-             --topology "$CARDANO_CONFIG_PREVIEW/topology.json" \
+             --topology "$CARDANO_CONFIG_PREVIEW/topology.*json" \
              --database-path "$CARDANO_DATA" \
              --socket-path "$CARDANO_CONFIG_PREVIEW/node.socket" \
              --host-addr 0.0.0.0 \

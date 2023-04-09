@@ -1,11 +1,17 @@
 #!/bin/bash
 
 NET=$1
+
+if [[ "$NET" =~ ^(preview|preprod|mainnet)$ ]]; then
+    echo "Unknown net: $NET"
+    exit 1
+fi
+
 BASE_URL="https://book.world.dev.cardano.org/environments/$NET"
-NET_CONFIG="$CARDANO_CONFIG/$NET"
+NET_CONFIG="$CARDANO_DATA/$NET"
 
 echo "Creating $NET_CONFIG"
-mkdir $NET_CONFIG -p
+mkdir "$NET_CONFIG" -p
 
 for file_name in config db-sync-config submit-api-config topology byron-genesis shelley-genesis alonzo-genesis
 do

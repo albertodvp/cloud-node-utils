@@ -52,7 +52,8 @@ In this step, we install some tools with nix.
 ### Run the preview testnet node
 > **_NOTE:_** please, do check downloaded config manually before running the node.
 ```bash
-./scripts/setup-run-testnet-preview.sh
+./scripts/download_config_per_net.sh preview
+
 ```
 ### Run the mainnet node
 TODO
