@@ -37,7 +37,8 @@ In this step, we install and setup nix. We also create a user (in the example `a
 ```bash
 git clone https://github.com/albertodvp/cloud_node_utils.git
 cd cloud_node_utils
-./scripts/setup_root.sh albertodvp
+./scripts/setup_root.sh
+./scripts/create_root.sh albertodvp
 ```
 The same private key used for `root` will allow access to the newly created user.
 
