@@ -15,7 +15,7 @@ EOF
 
 adduser "$USERNAME" --disabled-password --gecos GECOS
 cp -r "$HOME/.ssh" "$USER_HOME/.ssh"
-cp -r "scripts" "$USER_HOME/scripts"
+cp "scripts/setup_user.sh" "$USER_HOME/"
 chown -R "$USERNAME":"$USERNAME" "$USER_HOME"
 
 # bash CARDNAO_DATA, cardano-cli, cardano-node
