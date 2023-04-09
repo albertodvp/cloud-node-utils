@@ -19,11 +19,11 @@ source "$USER_BASHRC"
 
 BUILD_NODE="cd cardano-node \
             && nix build .#cardano-node -o cardano-node-build --accept-flake-config \
-            && cp cardano-node-build/bin/cardano-node $USER_PATH"
+            && cp cardano-node-build/bin/cardano-node $USER_BIN"
 
 BUILD_CLI="cd cardano-node \
            && nix build .#cardano-cli -o cardano-cli-build --accept-flake-config \
-           && cp cardno-cli-build/bin/cardano-cli $USER_PATH"
+           && cp cardano-cli-build/bin/cardano-cli $USER_BIN"
 
 tmux start-server  
 tmux new-session -d -s node
