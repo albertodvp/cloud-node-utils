@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CARDANO_DATA="$HOME/data/cardano/db"
+CARDANO_DATA="$HOME/data/cardano/"
 USER_BASHRC="$HOME/.bashrc"
 
 git clone https://github.com/input-output-hk/cardano-node
