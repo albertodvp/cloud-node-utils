@@ -1,1 +1,4 @@
 export CARDANO_DATA=$CARDANO_DATA
+
+export PATH="$HOME/$USER_PATH:$PATH"
+
