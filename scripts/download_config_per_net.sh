@@ -29,4 +29,4 @@ cat <<EOF | tee "$NET_CONFIG/conway-genesis.json"
 EOF
 
 sed -i '$ d' "$NET_CONFIG/config.json"
-echo ',"ConwayGenesisFile": "conway-genesis.json", "ConwayGenesisHash": "f28f1c1280ea0d32f8cd3143e268650d6c1a8e221522ce4a7d20d62fc09783e1}' >> "$NET_CONFIG/config.json"
+echo ', "ConwayGenesisFile": "conway-genesis.json", "ConwayGenesisHash": "f28f1c1280ea0d32f8cd3143e268650d6c1a8e221522ce4a7d20d62fc09783e1"}' >> "$NET_CONFIG/config.json"
