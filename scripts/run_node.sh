@@ -14,7 +14,7 @@ NET_DATA="$CONFIG_FILE_DIR/db"
 
 mkdir "$NET_DATA" -p
 
-$HOME/cardano-node/cardano-node-build/bin/cardano-node run \
+cardano-node run \
              --topology "$CONFIG_FILE_DIR/topology.json" \
              --database-path "$NET_DATA" \
              --socket-path "$NET_DATA/node.socket" \
