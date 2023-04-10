@@ -19,4 +19,14 @@ do
     local_file="$NET_CONFIG/$file_name.json"
     echo "Downloading: $remote_file -> $local_file"
     curl "$remote_file" -o "$local_file"
-done    
+done
+
+# TMP: patch for Corway config files
+cat <<EOF | tee "$NET_CONFIG/conway-genesis.json"
+{
+  "genDelegs": {}
+}
+EOF
+
+sed -i '$ d' "$NET_CONFIG/config.json"
+echo ',\n  "ConwayGenesisFile": "conway-genesis.json",\n  "ConwayGenesisHash": "f28f1c1280ea0d32f8cd3143e268650d6c1a8e221522ce4a7d20d62fc09783e1\n}' >> "$NET_CONFIG/config.json"
