@@ -2,8 +2,8 @@
 
 NET=$1
 
-if [[ "$NET" =~ ^(preview|preprod|mainnet)$ ]]; then
-    echo "Unknown net: $NET"
+if ! [[ "$NET" =~ ^(preview|preprod|mainnet)$ ]]; then
+    echo "Unknown net: $NET (select one in preview|preprod|mainnet)"
     exit 1
 fi
 

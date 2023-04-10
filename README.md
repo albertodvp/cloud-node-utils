@@ -49,11 +49,11 @@ In this step, we install some tools with nix.
 ```
 
 ## Run (TODO)
-### Run the preview testnet node
+### Setup the config files for the nets 
 > **_NOTE:_** please, do check downloaded config manually before running the node.
 ```bash
 ./cloud-node-utils/scripts/download_config_per_net.sh preview
-
+./cloud-node-utils/scripts/download_config_per_net.sh mainnet
 ```
 ### Run the mainnet node
 TODO

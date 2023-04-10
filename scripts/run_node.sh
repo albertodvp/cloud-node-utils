@@ -2,21 +2,22 @@
 
 
 NET=$1
+PORT=$2
 
 if ! [[ "$NET" =~ ^(preview|preprod|mainnet)$ ]]; then
-    echo "Usage: $NET (select one in preview|preprod|mainnet)"
+    echo "Usage: run_node.sh NET PORT"
     exit 1
 fi
 
 CONFIG_FILE_DIR="$CARDANO_DATA/$NET"
-NET_DATA="$CARDANO_DATA/$NET/db"
+NET_DATA="$CONFIG_FILE_DIR/db"
 
 mkdir "$NET_DATA" -p
 
 $HOME/cardano-node/cardano-node-build/bin/cardano-node run \
-             --topology "$CONFIG_FILE_DIR/topology.*json" \
-             --database-path "$CARDANO_DATA" \
-             --socket-path "$CONFIG_FILE_DIR/node.socket" \
+             --topology "$CONFIG_FILE_DIR/topology.json" \
+             --database-path "$NET_DATA" \
+             --socket-path "$NET_DATA/node.socket" \
              --host-addr 0.0.0.0 \
-             --port 3001 \
+             --port "$PORT" \
              --config "$CONFIG_FILE_DIR/config.json"
