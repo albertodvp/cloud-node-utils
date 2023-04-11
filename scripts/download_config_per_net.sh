@@ -21,6 +21,11 @@ do
     curl "$remote_file" -o "$local_file"
 done
 
+cat <<EOF | tee -a "$USER_BASHRC"
+export CARDANO_NODE_SOCKET_PATH_$NET=$NET_CONFIG/db/node.socket
+EOF
+
+
 # TMP: patch for Corway config files
 cat <<EOF | tee "$NET_CONFIG/conway-genesis.json"
 {
