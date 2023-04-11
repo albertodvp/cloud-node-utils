@@ -21,7 +21,7 @@ do
     curl "$remote_file" -o "$local_file"
 done
 
-cat <<EOF | tee -a "$USER_BASHRC"
+cat <<EOF | tee -a "$HOME/.bashrc"
 export CARDANO_NODE_SOCKET_PATH_$NET=$NET_CONFIG/db/node.socket
 EOF
 
