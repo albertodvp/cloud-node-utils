@@ -7,7 +7,7 @@ if ! [[ "$NET" =~ ^(preview|preprod|mainnet)$ ]]; then
     exit 1
 fi
 
-BASE_URL="https://book.world.dev.cardano.org/environments/$NET"
+BASE_CONFIG_URL="https://book.world.dev.cardano.org/environments/$NET"
 NET_CONFIG="$CARDANO_DATA/$NET"
 
 echo "Creating $NET_CONFIG"
@@ -15,7 +15,7 @@ mkdir "$NET_CONFIG" -p
 
 for file_name in config db-sync-config submit-api-config topology byron-genesis shelley-genesis alonzo-genesis
 do
-    remote_file="$BASE_URL/$file_name.json"
+    remote_file="$BASE_CONFIG_URL/$file_name.json"
     local_file="$NET_CONFIG/$file_name.json"
     echo "Downloading: $remote_file -> $local_file"
     curl "$remote_file" -o "$local_file"
@@ -25,8 +25,9 @@ cat <<EOF | tee -a "$HOME/.bashrc"
 export CARDANO_NODE_SOCKET_PATH_$NET=$NET_CONFIG/db/node.socket
 EOF
 
+. "$HOME/.bashrc"
 
-# TMP: patch for Corway config files
+# TMP: patch for Conway config files
 cat <<EOF | tee "$NET_CONFIG/conway-genesis.json"
 {
   "genDelegs": {}

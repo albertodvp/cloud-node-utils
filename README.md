@@ -49,22 +49,37 @@ In this step, we install some tools with nix.
 ```
 
 ## Run (TODO)
-### Setup the config files for the nets 
+### Setup the config files
 > **_NOTE:_** please, do check downloaded config manually before running the node.
 ```bash
 ./cloud-node-utils/scripts/download_config_per_net.sh preview
 ./cloud-node-utils/scripts/download_config_per_net.sh mainnet
 ```
-### Run the mainnet node
-TODO
+### Run the node
+> **_NOTE:_** The port number is arbitrary
+```bash
+./cloud-node-utils/scripts/run_node.sh mainnet 3001
+./cloud-node-utils/scripts/run_node.sh preview 3002
+```
 
-### Use the cli
-TODO
+### Run the node
+> **_NOTE:_** The port number is arbitrary
+```bash
+./cloud-node-utils/scripts/run_node.sh mainnet 3001
+./cloud-node-utils/scripts/run_node.sh preview 3002
+```
+### Query the net 
+> **_NOTE:_** The environment variables used to set the CARDANO_NODE_SOCKET_PATH
+#### Mainnet
+```bash
+CARDANO_NODE_SOCKET_PATH=$CARDANO_NODE_SOCKET_PATH_mainnet cardano-cli query tip --mainnet
+```
+#### Preview
+```bash
+CARDANO_NODE_SOCKET_PATH=$CARDANO_NODE_SOCKET_PATH_preview cardano-cli query tip --testnet-magic 2
+```
 
 ## TODO
 - [ ] Setup github action to provision and deploy the node
 - [ ] Evaluate is nix build in parallel is ok
-- [ ] Setup preview node
-- [ ] Setup mainnet node
-- [ ] Setup command for cardano cli
 - [ ] Make pub key path/name customizable
