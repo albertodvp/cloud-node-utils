@@ -68,7 +68,8 @@ In this step, we install some tools with nix.
 ./cloud-node-utils/scripts/run_node.sh mainnet 3001
 ./cloud-node-utils/scripts/run_node.sh preview 3002
 ```
-### Query the net 
+
+## Query the net 
 > **_NOTE:_** The environment variables used to set the CARDANO_NODE_SOCKET_PATH
 #### Mainnet
 ```bash
@@ -77,6 +78,16 @@ CARDANO_NODE_SOCKET_PATH=$CARDANO_NODE_SOCKET_PATH_mainnet cardano-cli query tip
 #### Preview
 ```bash
 CARDANO_NODE_SOCKET_PATH=$CARDANO_NODE_SOCKET_PATH_preview cardano-cli query tip --testnet-magic 2
+```
+
+## Socket forwarding
+You can query the socket node running on cloud from a local host forwarding the socket:
+```bash
+ssh -nNT -L /tmp/node.socket:PATH_TO_REMOTE_NODE_SOCKET REMOTE_HOST
+```
+And then:
+```bash
+CARDANO_NODE_SOCKET_PATH=/tmp/node.socket cardano-cli query tip --mainnet
 ```
 
 ## TODO
